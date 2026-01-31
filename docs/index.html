@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Knowledge Base — ActiveData</title>
+  <meta name="description" content="Guides, quickstart, permissions, troubleshooting, and billing for ActiveData (ActiveCampaign → Google Sheets)."/>
+  <link rel="icon" href="/assets/favicon.ico"/>
+
+  <style>
+    :root{
+      --accent:#5b7cff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --border:#e5e7eb;
+      --card:#f8fafc;
+      --radius:12px;
+      --shadow:0 10px 30px rgba(3,7,18,.08), 0 6px 16px rgba(3,7,18,.06);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:#fff;
+      display:flex; flex-direction:column; min-height:100vh;
+    }
+    a{color:var(--accent); text-decoration:none}
+    .wrap{max-width:920px;margin:auto;padding:0 20px}
+
+    /* Header (same as index; no “Support” link) */
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-weight:800;letter-spacing:.2px;color:#0f172a}
+    .brand a{color:inherit; text-decoration:none}
+    .links{display:flex;gap:22px;align-items:center}
+    .links a{color:#1f2a44}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid transparent}
+    .btn.primary{background:var(--accent);color:#fff;box-shadow:var(--shadow)}
+
+    /* Main */
+    main{flex:1; display:flex; flex-direction:column; padding:18px 0 32px}
+
+    /* Topic cards */
+    .topics{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:14px;
+      margin:6px 0 20px;
+    }
+    .topic{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:14px 14px 12px;
+      box-shadow:var(--shadow);
+    }
+    .topic h3{margin:0 0 6px; font-size:16px; color:#0f172a}
+    .topic p{margin:0 0 10px; color:#5a667a; font-size:14px; line-height:1.45}
+    .topic a{font-weight:600}
+
+    /* Content sections */
+    section.kb{padding:18px 0}
+    section.kb h2{font-size:20px;margin:0 0 8px}
+    code{background:#f3f4f6;padding:2px 6px;border-radius:6px}
+    pre{
+      background:#0b1021;color:#e6ebff;padding:12px;border-radius:12px;
+      overflow:auto;border:1px solid #111827;
+    }
+    ul,ol{line-height:1.65}
+
+    /* Footer (same as index) */
+    footer{border-top:1px solid var(--border);background:#fff;color:#475569}
+    footer .wrap{padding:18px 20px}
+    footer a{color:#334155}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><a href="/">ActiveData</a></div>
+    <nav class="links">
+      <a href="/pricing">Pricing</a>
+      <a href="/docs/">Knowledge Base</a>
+      <a href="/changelog">Changelog</a>
+      <a class="btn primary" href="https://workspace.google.com/marketplace/app/ACTIVE_DATA_LISTING_ID" target="_blank" rel="noopener">Install</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- Topic cards -->
+    <div class="topics">
+      <div class="topic">
+        <h3>Quickstart</h3>
+        <p>Install, connect ActiveCampaign, run your first sync in minutes.</p>
+        <a href="#quickstart">Open guide →</a>
+      </div>
+      <div class="topic">
+        <h3>Permissions &amp; Scopes</h3>
+        <p>Exactly what we request and why.</p>
+        <a href="#permissions">Open guide →</a>
+      </div>
+      <div class="topic">
+        <h3>Troubleshooting</h3>
+        <p>API keys, rate limits, sheet write issues.</p>
+        <a href="#troubleshooting">Open guide →</a>
+      </div>
+      <div class="topic">
+        <h3>Billing (Paystack)</h3>
+        <p>Subscribe, manage, cancel, invoices.</p>
+        <a href="#billing">Open guide →</a>
+      </div>
+      <div class="topic">
+        <h3>Data &amp; Privacy</h3>
+        <p>What we store, retention, deletion.</p>
+        <a href="#privacy">Open guide →</a>
+      </div>
+      <div class="topic">
+        <h3>Support</h3>
+        <p>How to reach us and what to include.</p>
+        <a href="#support">Open guide →</a>
+      </div>
+    </div>
+
+    <!-- Sections -->
+    <section id="quickstart" class="kb">
+      <h2>Quickstart</h2>
+      <ol>
+        <li>Install the add-on from Google Workspace Marketplace:
+          <br/><em><a href="https://workspace.google.com/marketplace/app/ACTIVE_DATA_LISTING_ID" target="_blank" rel="noopener">Install ActiveData →</a></em></li>
+        <li>In Google Sheets: <strong>Extensions → ActiveData → Launch</strong>.</li>
+        <li>In ActiveCampaign (AC): <strong>Settings → Developer</strong> → copy your <strong>API URL</strong> and <strong>API Key</strong>.
+          <br/>Paste into ActiveData’s connection screen and click <strong>Connect</strong>.</li>
+        <li>Select the **campaigns/lists** and **fields/metrics** you want (e.g., sends, opens, clicks, revenue).</li>
+        <li>Choose a destination Sheet and click **Run Sync** to test. Confirm columns populate.</li>
+        <li>Optional: enable **Schedule** (Hourly / Daily / Weekly). You can pause or delete at any time.</li>
+      </ol>
+      <p><em>Tip:</em> Create a dedicated <strong>read-only</strong> API key in ActiveCampaign for extra safety.</p>
+    </section>
+
+    <section id="permissions" class="kb">
+      <h2>Permissions &amp; Scopes</h2>
+      <ul>
+        <li><code>https://www.googleapis.com/auth/spreadsheets</code> — write metrics to the Sheet(s) you select.</li>
+        <li><code>script.container.ui</code> — render sidebar and menus inside Sheets.</li>
+      </ul>
+      <p><strong>ActiveCampaign:</strong> API Key or Personal Access Token with <strong>read-only</strong> access to reporting endpoints we use. We never write to AC.</p>
+      <p>We don’t store your Sheet contents or full AC payloads—only configuration and minimal job metadata to run the service.</p>
+    </section>
+
+    <section id="troubleshooting" class="kb">
+      <h2>Troubleshooting</h2>
+      <ul>
+        <li><strong>401/403 from ActiveCampaign:</strong> Ensure the API URL and Key belong to the same AC account; confirm the key has read access. If rotating keys, update ActiveData.</li>
+        <li><strong>No columns created / no data:</strong> Confirm you selected a writable Sheet and have edit access. Try a small date range first.</li>
+        <li><strong>Rate limits:</strong> Large accounts can hit AC limits. Reduce frequency, narrow the scope, or schedule during off-hours. ActiveData backs off and retries automatically.</li>
+        <li><strong>Time zone mismatches:</strong> Check your Sheet’s timezone (File → Settings) and any date filters in the add-on.</li>
+        <li><strong>Scheduled job didn’t run:</strong> Ensure the schedule is enabled, credentials are valid, and your billing is active.</li>
+      </ul>
+    </section>
+
+    <section id="billing" class="kb">
+      <h2>Billing &amp; Licensing (Paystack)</h2>
+      <ul>
+        <li><strong>Plans:</strong> Monthly (R199) or Annual (R1,990, ~2 months free). Same features; Annual is best value.</li>
+        <li><strong>Checkout:</strong> Pay securely via <strong>Paystack</strong>. We never store card data.</li>
+        <li><strong>Manage subscription:</strong> Use your Paystack customer portal
+          (<em><a href="[PAYSTACK_PORTAL_LINK]" target="_blank" rel="noopener">open portal</a></em>) to update card details, download invoices, or cancel.</li>
+        <li><strong>Licensing:</strong> Access is tied to your Google account email used at checkout.</li>
+        <li><strong>Invoices/receipts:</strong> Sent by Paystack to your billing email.</li>
+        <li><strong>Refunds:</strong> As outlined in our <a href="/terms">Terms</a> (case-by-case unless required by law).</li>
+      </ul>
+    </section>
+
+    <section id="privacy" class="kb">
+      <h2>Data &amp; Privacy</h2>
+      <p>We store configuration (AC API URL & token, selected fields, schedules, destination Sheet) and operational metadata (job status, error codes). Tokens are encrypted and loaded only for the duration of a sync. See our <a href="/privacy">Privacy Policy</a> and <a href="/security">Security</a> for retention, deletion, and sub-processors.</p>
+    </section>
+
+    <section id="support" class="kb">
+      <h2>Support</h2>
+      <p>Email <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>. Include:</p>
+      <ul>
+        <li>Screenshot of the error (and any error code)</li>
+        <li>Link to the affected Google Sheet (optional)</li>
+        <li>Approximate time you ran the sync</li>
+      </ul>
+      <p>Typical response time: 24–48 hours.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="y"></span> ActiveData •
+    <a href="/privacy">Privacy Policy</a> •
+    <a href="/terms">Terms</a> •
+    <a href="/security">Security</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
