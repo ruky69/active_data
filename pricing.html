@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pricing — ActiveData</title>
+  <meta name="description" content="Simple pricing for the ActiveData Google Sheets add-on."/>
+  <link rel="icon" href="/assets/favicon.ico"/>
+
+  <style>
+    :root{
+      /* Same tokens as index */
+      --bg:#0b1021; --bg2:#0e1430;              /* hero gradient stops */
+      --ink:#e6ebff; --muted:#c9d5ff;           /* hero text colors   */
+      --accent:#5b7cff; --panel:rgba(255,255,255,.06);
+      --shadow:0 10px 30px rgba(3,7,18,.25),0 6px 16px rgba(3,7,18,.18);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:#0f172a;
+      background:#fff;                   /* <-- keep body light like index */
+      display:flex; flex-direction:column; min-height:100vh;
+    }
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:1100px;margin:auto;padding:0 20px}
+
+    /* Header (same structure as index) */
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid #e5e7eb;z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-weight:800;letter-spacing:.2px;color:#0f172a}
+    .brand a{color:inherit}
+    .links{display:flex;gap:22px;align-items:center}
+    .links a{color:#1f2a44}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid transparent}
+    .btn.primary{background:var(--accent);color:#fff;box-shadow:var(--shadow)}
+
+    /* Main grows to push footer down */
+    main{flex:1; display:flex; flex-direction:column}
+
+    /* HERO — EXACTLY MATCHES INDEX */
+    .hero{
+      background:
+        radial-gradient(1200px 600px at 20% -10%, #1b2453 0%, transparent 60%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      color:var(--ink);
+      padding:72px 0 56px;
+    }
+
+    /* Two-column layout */
+    .grid{
+      display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center;
+    }
+    .imgWrap{
+      border:1px solid rgba(255,255,255,.18);
+      background:var(--panel);
+      border-radius:20px;overflow:hidden;
+      backdrop-filter:blur(6px);
+      box-shadow:inset 0 10px 24px rgba(0,0,0,.25), 0 6px 16px rgba(0,0,0,.25);
+      aspect-ratio:4/3;
+    }
+    .imgWrap img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.95)}
+
+    .copy h1{margin:0 0 8px;font-size:32px;line-height:1.35;color:#eef2ff}
+    .sub{color:var(--muted);margin:0 0 16px}
+
+    /* Pricing cards */
+    .pricing{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0 18px;
+    }
+    .card{
+      border:1px solid rgba(255,255,255,.18);
+      background:var(--panel);
+      border-radius:16px;padding:16px 18px;
+      backdrop-filter:blur(6px);
+    }
+    .card h3{margin:0 0 8px;font-size:18px;color:#eef2ff}
+    .amount{font-size:28px;font-weight:700;color:#fff}
+    .per{font-weight:400;color:var(--muted)}
+    .strike{color:#9aa5d1;text-decoration:line-through;margin-right:8px}
+    .note{color:var(--muted);font-size:14px;margin-top:6px}
+
+    .cta{
+      display:inline-flex;gap:10px;align-items:center;margin-top:8px;
+      background:var(--accent);color:#fff;padding:12px 16px;border-radius:12px;
+      box-shadow:var(--shadow);
+    }
+
+    /* Footer (same structure as index) */
+    footer{border-top:1px solid #e5e7eb;background:#fff;color:#475569}
+    footer .wrap{padding:18px 20px}
+    footer a{color:#334155}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr;gap:18px}
+      .copy h1{font-size:26px}
+      .pricing{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><a href="/">ActiveData</a></div>
+    <nav class="links">
+      <a href="/pricing">Pricing</a>
+      <a href="/docs/">Knowledge Base</a>
+      <a href="/changelog">Changelog</a>
+      <a class="btn primary" href="https://workspace.google.com/marketplace/app/ACTIVE_DATA_LISTING_ID" target="_blank" rel="noopener">Install</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap grid">
+
+      <!-- Left: placeholder image -->
+      <div class="imgWrap">
+        <img src="/assets/pricing-placeholder.jpg" alt="Pricing visual placeholder">
+      </div>
+
+      <!-- Right: pricing -->
+      <div class="copy">
+        <h1>Simple pricing. Same features.<br/>Pay monthly or save with annual.</h1>
+        <p class="sub">ActiveCampaign → Google Sheets, on schedule.</p>
+
+        <div class="pricing">
+          <div class="card">
+            <h3>Monthly</h3>
+            <div class="amount">R199 <span class="per">/ month</span></div>
+            <div class="note">Billed monthly. Cancel anytime.</div>
+          </div>
+
+          <div class="card">
+            <h3>
+              Annual
+              <span style="background:#1e2a6f;color:#cfe0ff;border:1px solid rgba(255,255,255,.2);padding:2px 8px;border-radius:999px;font-size:12px;margin-left:6px">
+                Save ~2 months
+              </span>
+            </h3>
+            <div class="amount">
+              <span class="strike">R2,388</span> R1,990 <span class="per">/ year</span>
+            </div>
+            <div class="note">Same features as Monthly — best overall value.</div>
+          </div>
+        </div>
+
+        <a class="cta" href="[YOUR_CHECKOUT_LINK]">Get started</a>
+        <div class="note" style="margin-top:10px">You’ll choose Monthly or Annual at checkout.</div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="y"></span> ActiveData •
+    <a href="/privacy">Privacy Policy</a> •
+    <a href="/terms">Terms</a> •
+    <a href="/security">Security</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

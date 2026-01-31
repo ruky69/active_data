@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Privacy Policy — ActiveData</title>
+  <meta name="description" content="Privacy Policy for the ActiveData Google Sheets add-on."/>
+  <link rel="icon" href="/assets/favicon.ico"/>
+  <style>
+    :root{--accent:#5b7cff;--ink:#0f172a;--muted:#475569;--border:#e5e7eb;--card:#f8fafc;--radius:12px;--shadow:0 10px 30px rgba(3,7,18,.08),0 6px 16px rgba(3,7,18,.06)}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff;display:flex;flex-direction:column;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .wrap{max-width:920px;margin:auto;padding:0 20px}
+
+    /* Header (same as other pages) */
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-weight:800;letter-spacing:.2px;color:var(--ink)}
+    .brand a{color:inherit}
+    .links{display:flex;gap:22px;align-items:center}
+    .links a{color:#1f2a44}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid transparent}
+    .btn.primary{background:var(--accent);color:#fff;box-shadow:var(--shadow)}
+
+    /* Body */
+    main{flex:1;display:flex;flex-direction:column;padding:24px 0}
+    h1{font-size:28px;margin:8px 0 18px}
+    h2{font-size:20px;margin:22px 0 10px}
+    p.muted{color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin:12px 0}
+    ul,ol{line-height:1.65}
+    small{color:var(--muted)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border);background:#fff;color:#475569}
+    footer .wrap{padding:18px 20px}
+    footer a{color:#334155}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand"><a href="/">ActiveData</a></div>
+    <nav class="links">
+      <a href="/pricing">Pricing</a>
+      <a href="/docs/">Knowledge Base</a>
+      <a href="/changelog">Changelog</a>
+      <a class="btn primary" href="https://workspace.google.com/marketplace/app/ACTIVE_DATA_LISTING_ID" target="_blank" rel="noopener">Install</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="muted">This Policy explains what we collect, why we collect it, and how you can control your data when using ActiveData — a Google Sheets add-on that reads metrics from ActiveCampaign and writes them into your spreadsheets.</p>
+
+    <!-- 1. Who we are & scope -->
+    <section class="card">
+      <h2>1) Who we are &amp; scope</h2>
+      <p>ActiveData (“we”, “us”) provides a Google Sheets add-on and related services (the “Service”). This Policy applies to the Service, our website, and customer support interactions.</p>
+    </section>
+
+    <!-- 2. What we collect -->
+    <section class="card">
+      <h2>2) Information we collect</h2>
+      <ul>
+        <li><strong>Account &amp; billing</strong>: name, email, subscription status, invoices/receipts (via our payment processor). We do not store card data.</li>
+        <li><strong>Configuration</strong>: ActiveCampaign API URL and token <em>(encrypted)</em>, selected fields, schedules, chosen spreadsheet(s), and last sync checkpoints.</li>
+        <li><strong>Operational logs</strong>: timestamps, job status, response codes, error messages, rate-limit/backoff events. We do <em>not</em> log secrets or full payloads.</li>
+        <li><strong>Website analytics</strong> (if enabled): basic usage metrics and device info to improve the site; cookies are limited to essential functionality unless noted.</li>
+      </ul>
+      <p><em>We do not persist your Google Sheet contents or full ActiveCampaign records beyond short-lived processing needed for a sync.</em></p>
+    </section>
+
+    <!-- 3. Data sources and permissions -->
+    <section class="card">
+      <h2>3) Data sources &amp; permissions</h2>
+      <ul>
+        <li><strong>Google Sheets</strong>: we request <code>https://www.googleapis.com/auth/spreadsheets</code> to create/update cells in the sheet(s) you select.</li>
+        <li><strong>ActiveCampaign</strong>: you provide an API key or personal access token with <strong>read-only</strong> access to endpoints we use (campaigns, lists, metrics). We recommend a dedicated read-only API user.</li>
+      </ul>
+      <p>Scopes and tokens are used solely to provide the Service and are handled per our Security practices.</p>
+    </section>
+
+    <!-- 4. How we use information -->
+    <section class="card">
+      <h2>4) How we use information</h2>
+      <ul>
+        <li>Provide the Service (run manual/scheduled syncs, render UI in Sheets, write data to your spreadsheets).</li>
+        <li>Operate, maintain, and improve performance and reliability.</li>
+        <li>Authenticate access, enforce licensing, and process payments.</li>
+        <li>Provide customer support and communicate important updates (e.g., receipts, incidents).</li>
+        <li>Comply with legal obligations and enforce our Terms.</li>
+      </ul>
+      <p>We do not sell personal information. We do not use your data for advertising.</p>
+    </section>
+
+    <!-- 5. Legal bases -->
+    <section class="card">
+      <h2>5) Legal bases (where applicable)</h2>
+      <ul>
+        <li><strong>Contract</strong> — to provide the Service you requested.</li>
+        <li><strong>Legitimate interests</strong> — to secure and improve the Service (balanced against your rights).</li>
+        <li><strong>Consent</strong> — where required (e.g., certain analytics or marketing communications).</li>
+        <li><strong>Legal obligation</strong> — to comply with law and enforce our Terms.</li>
+      </ul>
+    </section>
+
+    <!-- 6. Sharing & sub-processors -->
+    <section class="card">
+      <h2>6) Sharing &amp; sub-processors</h2>
+      <p>We share data with providers that help us run the Service, under contracts requiring appropriate safeguards:</p>
+      <ul>
+        <li><strong>Google Cloud</strong> — hosting, databases, logging, and secrets management.</li>
+        <li><strong>Payment processor</strong> — subscription billing (e.g., Paystack or Stripe). Card data handled by the processor only.</li>
+        <li><strong>Error/analytics tooling</strong> (if enabled) — service health and diagnostics. No secrets or payloads are sent.</li>
+      </ul>
+      <p>We may disclose information to comply with law, protect rights/safety, or in connection with a business transaction (with appropriate notice and protections).</p>
+    </section>
+
+    <!-- 7. Security -->
+    <section class="card">
+      <h2>7) Security</h2>
+      <ul>
+        <li><strong>In transit</strong>: TLS 1.2+ for all network communications (ActiveCampaign ↔ Service ↔ Google APIs).</li>
+        <li><strong>At rest</strong>: configuration and metadata encrypted at rest by our cloud provider.</li>
+        <li><strong>Secrets</strong>: ActiveCampaign tokens stored in a secrets manager and loaded only for the duration of a sync; never logged; masked in dashboards.</li>
+        <li><strong>Access control</strong>: least privilege, MFA for production access, audit logs, periodic access reviews.</li>
+      </ul>
+      <p>Details: see our <a href="/security">Security</a> page.</p>
+    </section>
+
+    <!-- 8. Retention -->
+    <section class="card">
+      <h2>8) Retention</h2>
+      <ul>
+        <li><strong>Configuration</strong>: retained until you delete it or your account is closed.</li>
+        <li><strong>Operational logs</strong>: kept for support and reliability for <em>[set period, e.g., 30–90 days]</em>.</li>
+        <li>Backups (if any) follow rolling retention; secrets excluded from logs.</li>
+      </ul>
+    </section>
+
+    <!-- 9. International transfers -->
+    <section class="card">
+      <h2>9) International transfers</h2>
+      <p>We may process data in locations where our cloud provider operates. Where required, we implement appropriate safeguards (e.g., standard contractual clauses) for cross-border transfers.</p>
+    </section>
+
+    <!-- 10. Your choices & rights -->
+    <section class="card">
+      <h2>10) Your choices &amp; rights</h2>
+      <ul>
+        <li>Uninstall the add-on at any time from Google Workspace.</li>
+        <li>Rotate or revoke your ActiveCampaign token at any time.</li>
+        <li>Disable or delete schedules and configuration from within the add-on.</li>
+        <li>Request access, correction, export, or deletion by emailing <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</li>
+      </ul>
+      <p>Depending on your region (e.g., GDPR/POPIA/CCPA), you may have additional rights. We will verify your request and respond within required timeframes.</p>
+    </section>
+
+    <!-- 11. Children -->
+    <section class="card">
+      <h2>11) Children</h2>
+      <p>The Service is not directed to children under 18. We do not knowingly collect personal information from children.</p>
+    </section>
+
+    <!-- 12. Changes -->
+    <section class="card">
+      <h2>12) Changes to this Policy</h2>
+      <p>We may update this Policy from time to time. If changes materially affect your rights, we will provide additional notice where required.</p>
+    </section>
+
+    <!-- 13. Contact -->
+    <section class="card">
+      <h2>13) Contact</h2>
+      <p>Questions about this Policy or our data practices? Email <a href="mailto:privacy@yourdomain.com">privacy@yourdomain.com</a> or <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
+      <small>Last updated: <span id="updated">2025-09-27</span></small>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="y"></span> ActiveData •
+    <a href="/privacy">Privacy Policy</a> •
+    <a href="/terms">Terms</a> •
+    <a href="/security">Security</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

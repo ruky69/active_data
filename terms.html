@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Terms of Service — ActiveData</title>
+  <meta name="description" content="Terms of Service for the ActiveData Google Sheets add-on."/>
+  <link rel="icon" href="/assets/favicon.ico"/>
+  <style>
+    :root{--accent:#5b7cff;--ink:#0f172a;--muted:#475569;--border:#e5e7eb;--card:#f8fafc;--radius:12px;--shadow:0 10px 30px rgba(3,7,18,.08),0 6px 16px rgba(3,7,18,.06)}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff;display:flex;flex-direction:column;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .wrap{max-width:920px;margin:auto;padding:0 20px}
+
+    /* Header (same as other pages) */
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-weight:800;letter-spacing:.2px;color:var(--ink)}
+    .brand a{color:inherit}
+    .links{display:flex;gap:22px;align-items:center}
+    .links a{color:#1f2a44}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid transparent}
+    .btn.primary{background:var(--accent);color:#fff;box-shadow:var(--shadow)}
+
+    /* Body */
+    main{flex:1;display:flex;flex-direction:column;padding:24px 0}
+    h1{font-size:28px;margin:8px 0 18px}
+    h2{font-size:20px;margin:22px 0 10px}
+    p.muted{color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin:12px 0}
+    ul,ol{line-height:1.65}
+    small{color:var(--muted)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border);background:#fff;color:#475569}
+    footer .wrap{padding:18px 20px}
+    footer a{color:#334155}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand"><a href="/">ActiveData</a></div>
+    <nav class="links">
+      <a href="/pricing">Pricing</a>
+      <a href="/docs/">Knowledge Base</a>
+      <a href="/changelog">Changelog</a>
+      <a class="btn primary" href="https://workspace.google.com/marketplace/app/ACTIVE_DATA_LISTING_ID" target="_blank" rel="noopener">Install</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Terms of Service</h1>
+    <p class="muted">These Terms govern your access to and use of ActiveData — a Google Sheets add-on that reads metrics from ActiveCampaign and writes them into your spreadsheets.</p>
+
+    <section class="card">
+      <h2>1. Agreement &amp; updates</h2>
+      <p>By installing or using ActiveData, you agree to these Terms and to our <a href="/privacy">Privacy Policy</a>. We may update these Terms from time to time; the “Last updated” date below will change. Your continued use after an update means you accept the changes.</p>
+    </section>
+
+    <section class="card">
+      <h2>2. The Service</h2>
+      <ul>
+        <li><strong>What it does:</strong> pulls read-only metrics from your ActiveCampaign account and writes selected fields to your chosen Google Sheets.</li>
+        <li><strong>What it doesn’t do:</strong> it does not modify your ActiveCampaign data and does not store your sheet contents on our servers.</li>
+        <li><strong>Accounts &amp; orders:</strong> features and pricing are set out on <a href="/pricing">/pricing</a> and in your checkout confirmation.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>3. Eligibility &amp; accounts</h2>
+      <ul>
+        <li>You must be at least 18 and able to enter a binding contract.</li>
+        <li>Keep your Google and ActiveCampaign credentials secure; you are responsible for actions taken using your credentials and within your add-on configuration.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>4. Permissions &amp; data access</h2>
+      <ul>
+        <li><strong>Google scope:</strong> <code>https://www.googleapis.com/auth/spreadsheets</code> to create and update cells in your chosen sheets.</li>
+        <li><strong>ActiveCampaign:</strong> API key or personal access token with <strong>read-only</strong> permissions for endpoints required to fetch metrics.</li>
+        <li><strong>Stored configuration:</strong> encrypted AC token, API URL, selected fields, schedules, destination sheet, and last sync checkpoints.</li>
+        <li><strong>No payload storage:</strong> we do <em>not</em> persist full ActiveCampaign payloads or your sheet contents; processing is transient for the sync.</li>
+      </ul>
+      <p>For security practices, see <a href="/security">Security</a>.</p>
+    </section>
+
+    <section class="card">
+      <h2>5. Your responsibilities</h2>
+      <ul>
+        <li>Provide accurate information and keep credentials/tokens current.</li>
+        <li>Use the Service in compliance with applicable laws and your organization’s policies.</li>
+        <li>Do not attempt to probe, breach, or bypass rate limits, licensing, or authentication.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>6. Subscription &amp; billing</h2>
+      <ul>
+        <li><strong>Plans:</strong> Monthly (R199) or Annual (R1,990, ~2 months free), same features. Prices are shown in ZAR unless otherwise specified; taxes may apply.</li>
+        <li><strong>Processor:</strong> payments are handled by our payment provider (e.g., Paystack/Stripe). We do not store card data.</li>
+        <li><strong>Renewal:</strong> subscriptions renew automatically until you cancel. You can cancel anytime; access remains through the end of the paid term.</li>
+        <li><strong>Refunds:</strong> refunds are at our reasonable discretion unless required by law. See <a href="/privacy">Privacy</a> for data handling and <a href="/kb/">Knowledge Base</a> for billing FAQs.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>7. Scheduling &amp; execution</h2>
+      <ul>
+        <li><strong>Manual sync:</strong> runs as initiated from the add-on UI.</li>
+        <li><strong>Scheduled sync:</strong> if enabled, our backend runs jobs on your behalf using your encrypted AC token; you may pause/disable at any time.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>8. Third-party services</h2>
+      <p>ActiveData relies on third-party platforms (ActiveCampaign, Google APIs, cloud hosting, and payment processors). We do not control third-party terms or availability. Your use of those services is governed by their agreements.</p>
+    </section>
+
+    <section class="card">
+      <h2>9. IP ownership</h2>
+      <ul>
+        <li><strong>Your data:</strong> you retain all rights in your Google Sheets and ActiveCampaign data.</li>
+        <li><strong>Our IP:</strong> we own the Service, software, documentation, and related materials. You receive a limited, revocable, non-transferable license to use the Service during your subscription.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>10. Confidentiality</h2>
+      <p>Each party may access the other’s confidential information (e.g., tokens, business information) only to provide or receive the Service and must protect it using reasonable safeguards. Exceptions apply for information that is public, independently developed, or rightfully obtained without duty of confidentiality.</p>
+    </section>
+
+    <section class="card">
+      <h2>11. Privacy &amp; security</h2>
+      <p>We implement reasonable technical and organizational measures to protect configuration and metadata (encryption in transit and at rest; token storage in a secrets manager). See <a href="/privacy">Privacy Policy</a> and <a href="/security">Security</a> for details, including retention and deletion.</p>
+    </section>
+
+    <section class="card">
+      <h2>12. Beta features</h2>
+      <p>We may label certain features as “beta,” “preview,” or similar. These features are provided “as is,” may change without notice, and may be subject to additional limits.</p>
+    </section>
+
+    <section class="card">
+      <h2>13. Warranties &amp; disclaimers</h2>
+      <p>THE SERVICE IS PROVIDED “AS IS” AND “AS AVAILABLE.” TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. We do not warrant that the Service will be uninterrupted, error-free, or meet your requirements.</p>
+    </section>
+
+    <section class="card">
+      <h2>14. Limitation of liability</h2>
+      <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL WE BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, OR GOODWILL. OUR TOTAL AGGREGATE LIABILITY FOR ALL CLAIMS RELATING TO THE SERVICE WILL NOT EXCEED THE AMOUNTS PAID BY YOU FOR THE SERVICE IN THE 12 MONTHS BEFORE THE EVENT GIVING RISE TO LIABILITY.</p>
+    </section>
+
+    <section class="card">
+      <h2>15. Indemnification</h2>
+      <p>You agree to defend, indemnify, and hold us harmless from claims, damages, liabilities, costs, and expenses (including reasonable legal fees) arising from your misuse of the Service, violation of these Terms, or infringement of third-party rights.</p>
+    </section>
+
+    <section class="card">
+      <h2>16. Suspension &amp; termination</h2>
+      <ul>
+        <li>We may suspend or terminate your access for material breach, security risk, non-payment, or unlawful use.</li>
+        <li>Upon termination, your license to use the Service ends and scheduled jobs stop. We will delete configuration and secrets per our <a href="/privacy">Privacy</a> retention policy.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>17. Changes to the Service</h2>
+      <p>We may modify, discontinue, or deprecate features with reasonable notice where practicable. If a change materially reduces core functionality you have paid for, you may cancel going forward.</p>
+    </section>
+
+    <section class="card">
+      <h2>18. Export &amp; compliance</h2>
+      <p>You must comply with applicable export, sanctions, and data protection laws when using the Service.</p>
+    </section>
+
+    <section class="card">
+      <h2>19. Governing law &amp; venue</h2>
+      <p>These Terms are governed by the laws of <strong>South Africa</strong> (without regard to conflict of law rules). Courts located in <strong>Johannesburg</strong> will have exclusive jurisdiction, and the parties consent to personal jurisdiction there. If you prefer a different governing law/venue, contact us before purchase.</p>
+    </section>
+
+    <section class="card">
+      <h2>20. Notices</h2>
+      <p>Notices will be sent to the email associated with your account. You can contact us at <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>. Legal notices: <a href="mailto:legal@yourdomain.com">legal@yourdomain.com</a>.</p>
+      <small>Last updated: <span id="updated">2025-09-27</span></small>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="y"></span> ActiveData •
+    <a href="/privacy">Privacy Policy</a> •
+    <a href="/terms">Terms</a> •
+    <a href="/security">Security</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Changelog — ActiveData</title>
+  <meta name="description" content="Release notes for ActiveData (ActiveCampaign → Google Sheets)."/>
+  <link rel="icon" href="/assets/favicon.ico"/>
+  <style>
+    :root{--accent:#5b7cff;--ink:#0f172a;--muted:#475569;--border:#e5e7eb;--card:#f8fafc;--radius:12px;--shadow:0 10px 30px rgba(3,7,18,.08),0 6px 16px rgba(3,7,18,.06)}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff;display:flex;flex-direction:column;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .wrap{max-width:920px;margin:auto;padding:0 20px}
+
+    /* Header (same as other pages) */
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-weight:800;letter-spacing:.2px}
+    .brand a{color:inherit;text-decoration:none}
+    .links{display:flex;gap:22px;align-items:center}
+    .links a{color:#1f2a44}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid transparent}
+    .btn.primary{background:var(--accent);color:#fff;box-shadow:var(--shadow)}
+
+    /* Main */
+    main{flex:1;display:flex;flex-direction:column;padding:24px 0}
+    h1{font-size:28px;margin:0 0 14px}
+    p.muted{color:var(--muted);margin:0 0 18px}
+
+    .entry{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      margin:12px 0;
+    }
+    .entry .head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+    .tag{display:inline-flex;align-items:center;gap:6px;background:#eef2ff;border:1px solid #dbe3ff;color:#2d3ea8;font-weight:600;padding:4px 10px;border-radius:999px;font-size:12px}
+    .ver{font-weight:700}
+    .date{color:var(--muted);font-size:13px}
+    ul{margin:8px 0 0 20px;line-height:1.6}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border);background:#fff;color:#475569}
+    footer .wrap{padding:18px 20px}
+    footer a{color:#334155}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><a href="/">ActiveData</a></div>
+    <nav class="links">
+      <a href="/pricing">Pricing</a>
+      <a href="/docs/">Knowledge Base</a>
+      <a href="/changelog">Changelog</a>
+      <a class="btn primary" href="https://workspace.google.com/marketplace/app/ACTIVE_DATA_LISTING_ID" target="_blank" rel="noopener">Install</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Changelog</h1>
+    <p class="muted">Release notes and updates for ActiveData (ActiveCampaign → Google Sheets).</p>
+
+    <!-- Single entry: Public Beta -->
+    <article class="entry">
+      <div class="head">
+        <span class="ver">v0.9.0</span>
+        <span class="date" id="betaDate"></span>
+      </div>
+      <ul>
+        <li><strong>Data Mode</strong> with options:
+          <em>Campaign Fields</em>, <em>Campaign Revenue Data</em>, <em>Message Fields</em>, <em>Campaign List Data</em>.</li>
+        <li><strong>Select Campaign Fields</strong> (multi-select) and write to Google Sheets.</li>
+        <li><strong>Controls</strong>: Save Settings, Fetch Now, Stop Fetch.</li>
+        <li>Initial validations and basic error messages.</li>
+      </ul>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="y"></span> ActiveData •
+    <a href="/privacy">Privacy Policy</a> •
+    <a href="/terms">Terms</a> •
+    <a href="/security">Security</a>
+  </div>
+</footer>
+
+<script>
+  // Footer year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Optional pretty date for this entry (today by default).
+  // If you want a fixed date, set const fixed = '2025-09-27' (YYYY-MM-DD).
+  const TZ = 'Africa/Johannesburg';
+  const fixedISO = '2025-09-20';
+  const fmt = new Intl.DateTimeFormat('en-ZA',
+    { timeZone: TZ, year:'numeric', month:'long', day:'numeric' });
+  document.getElementById('betaDate').textContent = '— ' + fmt.format(new Date(fixedISO));
+</script>
+
+</body>
+</html>

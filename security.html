@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Security — ActiveData</title>
+  <meta name="description" content="Security practices of ActiveData."/>
+  <link rel="icon" href="/assets/favicon.ico"/>
+  <style>
+    :root{--accent:#5b7cff;--ink:#0f172a;--muted:#475569;--border:#e5e7eb;--card:#f8fafc;--radius:12px;--shadow:0 10px 30px rgba(3,7,18,.08),0 6px 16px rgba(3,7,18,.06)}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff;display:flex;flex-direction:column;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .wrap{max-width:920px;margin:auto;padding:0 20px}
+
+    /* Header (same as other pages) */
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-weight:800;letter-spacing:.2px;color:var(--ink)}
+    .brand a{color:inherit}
+    .links{display:flex;gap:22px;align-items:center}
+    .links a{color:#1f2a44}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid transparent}
+    .btn.primary{background:var(--accent);color:#fff;box-shadow:var(--shadow)}
+
+    /* Body */
+    main{flex:1;display:flex;flex-direction:column;padding:24px 0}
+    h1{font-size:28px;margin:8px 0 18px}
+    h2{font-size:20px;margin:22px 0 10px}
+    p.muted{color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin:12px 0}
+    ul{line-height:1.65}
+    .badge{display:inline-block;background:#eef2ff;border:1px solid #dbe4ff;color:#243386;border-radius:999px;padding:2px 10px;font-size:12px;margin-left:6px}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border);background:#fff;color:#475569}
+    footer .wrap{padding:18px 20px}
+    footer a{color:#334155}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand"><a href="/">ActiveData</a></div>
+    <nav class="links">
+      <a href="/pricing">Pricing</a>
+      <a href="/docs/">Knowledge Base</a>
+      <a href="/changelog">Changelog</a>
+      <a class="btn primary" href="https://workspace.google.com/marketplace/app/ACTIVE_DATA_LISTING_ID" target="_blank" rel="noopener">Install</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Security</h1>
+    <p class="muted">How we protect your data for the ActiveData add-on (ActiveCampaign → Google Sheets).</p>
+
+    <section class="card">
+      <h2>Data access &amp; purpose</h2>
+      <ul>
+        <li><strong>ActiveCampaign (read-only):</strong> campaigns, lists, and email metrics (e.g., sends, opens, clicks, revenue). We do <em>not</em> request write/delete permissions in ActiveCampaign.</li>
+        <li><strong>Google Sheets (write):</strong> add/update rows and columns in the sheet(s) you select.</li>
+        <li><strong>Configuration (stored):</strong> AC API URL and token <em>(encrypted)</em>, selected fields, schedule, destination sheet, and last sync checkpoints.</li>
+        <li><strong>Operational metadata (stored):</strong> job status, error codes, rate-limit/backoff counters for reliability and support.</li>
+      </ul>
+      <p><em>We do not store your Google Sheet contents or full ActiveCampaign payloads beyond short-lived processing required for a sync.</em></p>
+    </section>
+
+    <section class="card">
+      <h2>Permissions we request</h2>
+      <ul>
+        <li><code>https://www.googleapis.com/auth/spreadsheets</code> — to write metrics into your chosen Google Sheets.</li>
+        <li><strong>ActiveCampaign token</strong> (API key or personal access token) with <strong>read-only</strong> access to the endpoints we use. We recommend creating a dedicated read-only API user in ActiveCampaign.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Architecture &amp; data flow</h2>
+      <ul>
+        <li>Frontend &amp; static site hosted on <strong>Firebase Hosting</strong> (Google Cloud).</li>
+        <li>Syncs run on <strong>Google Cloud</strong> (🔧 <em>Cloud Run / Cloud Functions — whichever you use</em>).</li>
+        <li>Configuration stored in <strong>Firestore</strong> (or a managed DB) and secrets in <strong>Secret Manager</strong>.</li>
+        <li>On manual or scheduled sync, we pull read-only metrics from ActiveCampaign over TLS and write to your sheet using the Google Sheets API (TLS).</li>
+      </ul>
+      <p class="muted">Data location: 🔧 <em>set your primary region(s) here — e.g., europe-west / us-central</em>.</p>
+    </section>
+
+    <section class="card">
+      <h2>Encryption</h2>
+      <ul>
+        <li><strong>In transit:</strong> TLS 1.2+ for all traffic (ActiveCampaign ↔ ActiveData ↔ Google APIs).</li>
+        <li><strong>At rest:</strong> configuration and metadata are encrypted at rest by Google Cloud.</li>
+        <li><strong>Secrets:</strong> ActiveCampaign tokens are stored in <strong>Secret Manager</strong> (KMS-backed). Secrets are loaded only for the duration of a sync and never logged; logs are masked.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Access control &amp; identity</h2>
+      <ul>
+        <li><strong>Least privilege</strong> for service accounts and staff; production access is restricted, requires <strong>MFA</strong>, and is audited.</li>
+        <li><strong>RBAC</strong> and periodic access reviews; service account keys and Secret Manager versions rotated regularly.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Retention &amp; deletion</h2>
+      <ul>
+        <li><strong>Configuration</strong> (destination sheet, schedules, selected fields, AC URL, encrypted token) is retained until you delete it or close your account.</li>
+        <li><strong>Operational logs</strong> (non-sensitive) retained for 🔧 <em>N days</em> to support troubleshooting.</li>
+        <li><strong>User controls:</strong> delete configuration from the add-on, rotate/revoke your AC token, or request full deletion via <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>. We delete configuration, secrets, and metadata within 🔧 <em>N days</em> of a confirmed request.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Scheduling &amp; execution</h2>
+      <ul>
+        <li><strong>Manual sync</strong> runs with your stored, encrypted AC token and writes to your selected sheet.</li>
+        <li><strong>Scheduled sync</strong> executes on our backend on your behalf using your encrypted token. You can pause or disable schedules at any time.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Logging, monitoring &amp; rate limits</h2>
+      <ul>
+        <li>We log job start/end, response codes, counts, and non-sensitive errors. We do not log payload bodies or secrets.</li>
+        <li>Alerts trigger for repeated failures/abnormal error rates.</li>
+        <li>ActiveCampaign rate limits are respected with exponential backoff and retry logic.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Secure development lifecycle</h2>
+      <ul>
+        <li>Code review for auth, secrets, and data-handling changes.</li>
+        <li>Automated dependency updates and vulnerability scanning (🔧 e.g., OSV/Dependabot/Snyk).</li>
+        <li>Infrastructure as code with peer review (🔧 e.g., Terraform); separate staging vs. production projects.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Incident response</h2>
+      <ul>
+        <li>We maintain a runbook for detection, containment, and remediation.</li>
+        <li>If user data is impacted, we notify affected users at the email on file and/or <a href="mailto:incident@yourdomain.com">incident@yourdomain.com</a> with impact, scope, and actions taken.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Compliance &amp; Google requirements <span class="badge">Workspace add-on</span></h2>
+      <ul>
+        <li>We align with Google’s User Data Policy for OAuth/Workspace add-ons (Limited Use).</li>
+        <li>Scopes are used solely to provide the features described; data is not sold or used for advertising.</li>
+        <li>We complete required verification/Data Safety steps for requested scopes.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Sub-processors</h2>
+      <ul>
+        <li><strong>Google Cloud</strong> — hosting &amp; managed services (compute, storage, networking, logging).</li>
+        <li><strong>Payment processor</strong> — subscription billing (🔧 Paystack/Stripe). Card data handled by the processor only.</li>
+        <li><strong>Error/analytics tooling</strong> — service health &amp; debugging (if enabled); no secrets/payloads sent.</li>
+      </ul>
+      <p class="muted">We maintain DPAs where applicable and use standard contractual protections.</p>
+    </section>
+
+    <section class="card">
+      <h2>User controls &amp; revocation</h2>
+      <ul>
+        <li>Rotate or revoke your ActiveCampaign token from ActiveCampaign or the add-on settings.</li>
+        <li>Disable or delete schedules at any time.</li>
+        <li>Request export or deletion of configuration via <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Contact</h2>
+      <ul>
+        <li>Security reports: <a href="mailto:security@yourdomain.com">security@yourdomain.com</a></li>
+        <li>General support: <a href="mailto:support@yourdomain.com">support@yourdomain.com</a></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="y"></span> ActiveData •
+    <a href="/privacy">Privacy Policy</a> •
+    <a href="/terms">Terms</a> •
+    <a href="/security">Security</a>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
